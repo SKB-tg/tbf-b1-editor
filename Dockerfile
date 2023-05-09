@@ -22,6 +22,6 @@ COPY public ./public
 
 #COPY createdb.sql ./ / /
 
-EXPOSE 5000
+EXPOSE 11000
 
 ENTRYPOINT ["python", "main.py"]
