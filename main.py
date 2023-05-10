@@ -91,11 +91,12 @@ async def startup():
     models.Base.metadata.create_all(bind=engine)
 #    await db.connect()
     webhook_info = await bot.get_webhook_info()
-    print(webhook_info)
-    #if webhook_info.url == WEBHOOK_URL:
+    #print(webhook_info)
+    if webhook_info.url != WEBHOOK_URL:
     try:
-      deli=await bot.delete_webhook()
-      print(deli)
+        await bot.set_webhook(
+            url=WEBHOOK_URL
+        )
     except Exception as e:
       raise e
 
