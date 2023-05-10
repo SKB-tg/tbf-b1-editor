@@ -14,7 +14,7 @@ COPY requirements.txt ./
 #RUN bash venvap/bin/activate 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY .env ./
+#COPY .env ./
 COPY *.py ./
 COPY promt.txt ./
 COPY app ./app
