@@ -15,7 +15,7 @@ from pathlib import Path
 
 STATIC_PATH = str(Path('main.py').parent.resolve()) + '/public'
 #APP_BASE_URL = "https://7bf2-46-56-191-9.ngrok-free.app" #getenv("URL")
-WEBHOOK_PATH=f"/bot/{settings.TELEGRAM_TOKEN}"
+WEBHOOK_PATH=f"/bot{settings.TELEGRAM_TOKEN}"
 
 def setup_config(application):
     application["config"] = config
