@@ -11,7 +11,7 @@ class Settings:
     SECRET_KEY = getenv("SECRET_KEY")
     TELEGRAM_TOKEN = getenv("TELEGRAM_TOKEN")
     APP_BASE_URL = getenv("APP_BASE_URL")
-    YOUR_API_KEY = getenv("YOUR_API_KEY")
+    OPENAI_API_KEY = getenv("OPENAI_API_KEY")
 
     DEBUG = bool(getenv("DEBUG"))
     ALLOWED_PORT = int(getenv("PORT"))
