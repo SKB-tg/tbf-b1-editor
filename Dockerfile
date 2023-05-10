@@ -16,6 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY .env ./
 COPY *.py ./
+COPY promt.txt ./
 COPY app ./app
 COPY public ./public
 
