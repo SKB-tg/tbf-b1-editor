@@ -9,7 +9,7 @@ class Settings:
     APP_TITLE = "App Tg"
     ALLOWED_HOST = getenv("ALLOWED_HOST")
     SECRET_KEY = getenv("SECRET_KEY")
-    TELEGRAM_TOKEN = getenv("TELEGRAM_TOKEN")
+    TELEGRAM_TOKEN = str(getenv("TELEGRAM_TOKEN"))
     APP_BASE_URL = getenv("APP_BASE_URL")
     OPENAI_API_KEY = getenv("OPENAI_API_KEY")
 
