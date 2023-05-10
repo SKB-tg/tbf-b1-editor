@@ -1,6 +1,8 @@
 
 from fastapi import APIRouter, Request, Response, FastAPI, Depends
 from fastapi.responses import Response
+from app.settings import settings
+
 #from auth.api import router as auth
 router = APIRouter()
 #router.include_router(auth)
@@ -46,7 +48,7 @@ import time
 
 #routes = RouteTableDef()
 STATIC_PATH = str(Path('main.py').parent.resolve()) + '/public'
-openai.api_key = "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" #os.getenv("OPENAI_API_KEY")
+openai.api_key = settings.YOUR_API_KEY #os.getenv("OPENAI_API_KEY")
 STATIC_PATH_IMG =str(STATIC_PATH) + '/static/img/openai_img/'
 
 def convertsu():
