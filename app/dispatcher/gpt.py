@@ -48,6 +48,7 @@ import time
 
 #routes = RouteTableDef()
 STATIC_PATH = str(Path('main.py').parent.resolve()) + '/public'
+openai.organization = "org-EQt3NJBh1f6cmj6JOuDmAJsQ"
 openai.api_key = settings.YOUR_API_KEY #os.getenv("OPENAI_API_KEY")
 STATIC_PATH_IMG =str(STATIC_PATH) + '/static/img/openai_img/'
 
