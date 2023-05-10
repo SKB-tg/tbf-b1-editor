@@ -73,7 +73,7 @@ WEBHOOK_URL=settings.APP_BASE_URL + WEBHOOK_PATH
 SimpleRequestHandler(
     dispatcher=_dispatcher, bot=bot,)
 
-_dispatcher["base_url"] = settings.APP_BASE_URL
+_dispatcher["base_url"] = settings.APP_BASE_URL +"/shop-online"
 app = FastAPI(title=settings.APP_TITLE)
 
 app.include_router(main_router)# router_views])
