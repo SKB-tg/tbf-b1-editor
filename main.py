@@ -93,12 +93,12 @@ async def startup():
     webhook_info = await bot.get_webhook_info()
     #print(webhook_info)
     if webhook_info.url != WEBHOOK_URL:
-    try:
-        await bot.set_webhook(
-            url=WEBHOOK_URL
-        )
-    except Exception as e:
-      raise e
+        try:
+            await bot.set_webhook(
+                url=WEBHOOK_URL
+            )
+        except Exception as e:
+            raise e
 
 
 @app.post(WEBHOOK_PATH)#
