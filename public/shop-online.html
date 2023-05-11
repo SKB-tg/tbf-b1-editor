@@ -655,16 +655,7 @@
     </div>
   </div>
 </div>
-<script>
 
-setTimeout(()=>{
-    var body = document.querySelector('body');
-    var popup = document.querySelector('.popup-reklama');
-    if (popup) {
-    popup.classList.add('is-active');
-      body.classList.toggle('no-scroll');
-    }}, 2000);
-  </script>
 <!-- /.popup-reklama -->
 
 <button class="cart-btn" data-popup="popup-order">
@@ -686,5 +677,18 @@ setTimeout(()=>{
 </script>
 <script type="text/javascript" src="/static/js/main.js"></script>
   <script src="/static/js/jquery-3.4.1.min.js"></script>
+
+  <script>//for popup-reklama
+if (!initDataUnsafe.query_id && !initData) {
+
+setTimeout(()=>{
+    var body = document.querySelector('body');
+    var popup = document.querySelector('.popup-reklama');
+    if (popup) {
+    popup.classList.add('is-active');
+      body.classList.toggle('no-scroll');
+    }}, 2000);
+  }
+  </script>
 
 </body></html>
