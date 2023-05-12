@@ -629,15 +629,15 @@
 <!-- popup-reklama -->
 <div class="popup popup-reklama">
   <div class="popup__wrapper">
-    <div class="popup__inner">
+    <div class="popup__inner1" style="vertical-align: middle;padding: 50px 0;">
       <div class="popup__content" style="display: flex;    flex-direction: column;align-items: center;max-width: 940px;">
-          <a href="/" class="popup__btn-close">
+        <a href="/" class="popup__btn-close">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
                 <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
             </svg>
         </a>
-        <h3 class=" popup__title">Вы попали на демонстрационную страницу </h3>
+                <h3 class=" popup__title">Вы попали на демонстрационную страницу </h3>
         <p class="popup__subtitle"><b>Запускайте бота по адресу в телеграмме "@Trading_all_bot"</b>
           <b>протестируйте и применяйте для расширения своих возможностей</b></p>
         <div class="popup__skrin" style="max-height: 400px;margin: 20px;width: 100%;
@@ -679,16 +679,21 @@
   <script src="/static/js/jquery-3.4.1.min.js"></script>
 
   <script>//for popup-reklama
-if (!initDataUnsafe.query_id && !initData) {
 
+if (!initDataUnsafe.query_id && !initData) {
+    var _body = document.querySelector('body');
+    var popup__btn_close = document.querySelector('.popup__btn-close');
+    var popup_reklama_child = document.querySelector('.popup-reklama').children;
 setTimeout(()=>{
-    var body = document.querySelector('body');
     var popup = document.querySelector('.popup-reklama');
+
     if (popup) {
     popup.classList.add('is-active');
-      body.classList.toggle('no-scroll');
+      _body.classList.toggle('no-scroll');
+
     }}, 2000);
   }
+
   </script>
 
 </body></html>
