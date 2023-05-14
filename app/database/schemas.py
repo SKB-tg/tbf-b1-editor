@@ -87,3 +87,8 @@ class TgUser(TgUserBase):
         orm_mode = True
         allow_population_by_field_name = True
         arbitrary_types_allowed = True
+
+class UpdatedUserResponse(BaseModel):
+    """docstring for UpdatedUserResponse"""
+    id_updated_user: int
+    first_name_updated_user: str
