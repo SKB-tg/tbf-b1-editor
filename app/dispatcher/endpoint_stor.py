@@ -7,6 +7,8 @@ from sqlalchemy.orm import Session
 from app.database import crud, models, schemas
 from app.db import SessionLocal, engine
 #from app.dispatcher import main_router
+from sqlalchemy.exc import IntegrityError
+
 
 #from dependency_injector.wiring import inject, Provide
 
@@ -108,12 +110,58 @@ def read_user(name: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="user not found")
     return db_user
 
-@router.post("/create-user/", response_model=schemas.TgUser)
+@router.post("/create-user/")#, response_model=schemas.TgUser)
 def _create_TgUser(user: schemas.TgUserCreate, db: Session = Depends(get_db)):
     db_user = crud.get_TgUser_by_email(db, first_name=user.first_name)
     if db_user:
         raise HTTPException(status_code=400, detail="Такой user существует")
     return crud.create_TgUser(db=db, user=user)
+
+@router.post("/update_user/", response_model=schemas.UpdatedUserResponse)
+async def grant_admin_privilege(
+    update_value: dict,
+    name: str = "",
+     db: Session = Depends(get_db)
+    #current_user: User = Depends(get_current_user_from_token),
+    ) -> schemas.UpdatedUserResponse:
+
+    # if not current_user.is_superadmin:
+    #     raise HTTPException(status_code=403, detail="Forbidden.")
+    # if current_user.user_id == user_id:
+    #     raise HTTPException(
+    #         status_code=400, detail="Cannot manage privileges of itself."
+    #     )
+    # user_for_promotion = await _get_user_by_id(user_id, db)
+    # if user_for_promotion.is_admin or user_for_promotion.is_superadmin:
+    #     raise HTTPException(
+    #         status_code=409,
+    #         detail=f"User with id {user_id} already promoted to admin / superadmin.",
+    #     )
+
+    db_user = crud.get_TgUser_by_email(db, first_name=name)
+    if db_user is None:
+        raise HTTPException(
+            status_code=404, detail=f"User with id {name} not found."
+        )
+    # updated_user_params = {
+    #     "roles": user_for_promotion.enrich_admin_roles_by_admin_role()
+    # }
+    try:
+        updated_user_fn = crud.update_TgUser(
+            db, db_user, update_value
+        )
+    except IntegrityError as err:
+        logger.error(err)
+        raise HTTPException(status_code=503, detail=f"Database error: {err}")
+    
+    print(updated_user_fn.__dict__)
+
+    return schemas.UpdatedUserResponse(id_updated_user=updated_user_fn.id, first_name_updated_user=updated_user_fn.first_name)
+
+
+
+
+
 # @app.post("/users/{user_id}/items/", response_model=schemas.Item)
 # def create_item_for_user(
 #     user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
