@@ -19,7 +19,7 @@ class TgUser(Base):
     username = Column(String)
     id_chat = Column(Integer)
     password = Column(String)
-    hashed_password = Column(String)
+    hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean, unique=False)
     last_name = Column(String)
     created = Column(DateTime)
